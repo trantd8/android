@@ -46,6 +46,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -117,6 +118,7 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
     private TextView mMultiListMessage;
     private TextView mMultiListHeadline;
     private ImageView mMultiListIcon;
+    private FrameLayout mMultiListProgress;
 
     private Boolean mShowResizedImage;
 
@@ -212,6 +214,7 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
         mMultiListMessage = view.findViewById(R.id.empty_list_view_text);
         mMultiListHeadline = view.findViewById(R.id.empty_list_view_headline);
         mMultiListIcon = view.findViewById(R.id.empty_list_icon);
+        mMultiListProgress = view.findViewById(R.id.empty_list_progress);
     }
 
     /**
@@ -704,10 +707,11 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
 
     private void setMultiListLoadingMessage() {
         if (mMultiListContainer != null) {
-            mMultiListHeadline.setText(R.string.file_list_loading);
+            mMultiListHeadline.setText("");
             mMultiListMessage.setText("");
 
             mMultiListIcon.setVisibility(View.GONE);
+            mMultiListProgress.setVisibility(View.VISIBLE);
         }
     }
 
@@ -723,6 +727,7 @@ public class PreviewImageFragment extends FileFragment implements Injectable {
 
             mMultiListMessage.setVisibility(View.VISIBLE);
             mMultiListIcon.setVisibility(View.VISIBLE);
+            mMultiListProgress.setVisibility(View.GONE);
         }
     }
 
