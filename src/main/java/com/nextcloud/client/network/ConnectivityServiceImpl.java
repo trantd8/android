@@ -143,7 +143,8 @@ class ConnectivityServiceImpl implements ConnectivityService {
 
     private boolean isAnyOtherNetworkWifi() {
         for (NetworkInfo networkInfo : platformConnectivityManager.getAllNetworkInfo()) {
-            if (networkInfo.isConnectedOrConnecting() && networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+            if (networkInfo.isConnectedOrConnecting() && (networkInfo.getType() == ConnectivityManager.TYPE_WIFI ||
+                networkInfo.getType() == ConnectivityManager.TYPE_ETHERNET)) {
                 return true;
             }
         }
